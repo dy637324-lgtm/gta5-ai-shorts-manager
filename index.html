@@ -4,12 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GTA 5 AI Shorts Manager</title>
-<style>body{margin:0;background:#101827;color:white;font-family:Arial,sans-serif;padding:24px}main{max-width:500px;margin:auto}h1{color:#b7f34a}section{background:#202c40;padding:18px;border-radius:14px;margin:16px 0}button{background:#b7f34a;border:0;border-radius:9px;padding:12px;font-weight:bold}p{line-height:1.5;color:#d4dbea}</style>
+<style>
+body{margin:0;background:#101827;color:white;font-family:Arial;padding:20px}
+main{max-width:500px;margin:auto}
+h1{color:#b7f34a}
+section{background:#202c40;padding:16px;border-radius:14px;margin:15px 0}
+button{background:#b7f34a;border:0;border-radius:8px;padding:12px;font-weight:bold;margin:5px 0}
+p{line-height:1.5;color:#d4dbea}
+#output{white-space:pre-wrap;overflow-wrap:anywhere}
+</style>
 </head>
-<body><main>
+<body>
+<main>
 <h1>GTA 5 AI Shorts Manager</h1>
 <p>Your mobile gaming Shorts dashboard.</p>
-<section><h2>Daily target</h2><p>3 English Shorts</p><p>Planned upload time: 6:00 PM IST</p></section>
-<section><h2>Video ideas</h2><p>1. GTA 5 Impossible Car Escape</p><p>2. Police Chase Gone Wrong</p><p>3. Secret Supercar Challenge</p></section>
-<section><h2>Upload status</h2><p>Not connected to YouTube yet.</p><p>Automatic video generation and scheduled uploading require a secure backend.</p></section>
-</main></body></html>
+<section>
+<h2>Daily Target</h2>
+<p>3 English Shorts per day</p>
+<p>Planned upload: 6:00 PM IST</p>
+</section>
+<section>
+<h2>Shorts Idea Generator</h2>
+<button onclick="idea()">Generate Video Idea</button>
+<p id="output">Tap the button to get a GTA 5 Shorts idea.</p>
+<button onclick="script()">Generate English Script</button>
+</section>
+<section>
+<h2>Upload Status</h2>
+<p id="status">YouTube is not connected.</p>
+<p>This dashboard does not generate video files or upload automatically yet.</p>
+</section>
+<script>
+const ideas=[
+"GTA 5 Impossible Car Escape",
+"Police Chase Gone Wrong",
+"Secret Supercar Challenge",
+"Franklin's Craziest Stunt",
+"GTA 5 vs Impossible Ramp",
+"Can This Car Escape the Police?",
+"Five-Star Wanted Level Challenge",
+"Hidden Supercar Mystery",
+"Insane Mountain Jump",
+"One Minute Survival Challenge"
+];
+let current="";
+function idea(){
+current=ideas[Math.floor(Math.random()*ideas.length)];
+document.getElementById("output").textContent=current;
+}
+function script(){
+if(!current) idea();
+document.getElementById("output").textContent=
+"TITLE: "+current+"\n\n"+
+"HOOK: You won't believe what happens next!\n\n"+
+"SCENE 1: Start with an exciting GTA 5 driving moment.\n\n"+
+"SCENE 2: The challenge suddenly gets harder. Show the chase or stunt.\n\n"+
+"SCENE 3: End with a surprising escape or crash.\n\n"+
+"VOICEOVER: This GTA 5 challenge looked impossible! Watch till the end to see what happens. Would you try this? Comment below!\n\n"+
+"NOTE: Add your own gameplay footage and edit it into a vertical 9:16 Short.";
+}
+</script>
+</main>
+</body>
+</html>
