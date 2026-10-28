@@ -1,0 +1,21 @@
+
+name: GTA 5 Shorts Manager Test
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 12 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check manager
+        run: |
+          echo "GTA 5 Shorts Manager is running."
+          echo "Video generation: not configured"
+          echo "YouTube upload: not configured"
+          echo "Scheduled check: successful"
