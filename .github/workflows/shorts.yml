@@ -1,21 +1,17 @@
-
-name: GTA 5 Shorts Manager Test
+name: GTA5 Shorts Manager
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "30 12 * * *"
 
 permissions:
   contents: read
 
 jobs:
-  test:
+  setup-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check manager
+      - name: Check YouTube secrets
         run: |
-          echo "GTA 5 Shorts Manager is running."
-          echo "Video generation: not configured"
-          echo "YouTube upload: not configured"
-          echo "Scheduled check: successful"
+          if [ -z "${{ secrets.YOUTUBE_CLIENT_ID }}" ]; then echo "Missing CLIENT_ID"; exit 1; fi
+          if [ -z "${{ secrets.YOUTUBE_CLIENT_SECRET }}" ]; then echo "Missing CLIENT_SECRET"; exit 1; fi
+          echo "Setup OK"
